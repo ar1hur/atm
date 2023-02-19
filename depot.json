@@ -1,0 +1,9 @@
+[
+	{"banknote": 500, "available": 10},
+	{"banknote": 200, "available": 7},
+	{"banknote": 100, "available": 8},
+	{"banknote": 50, "available": 10},
+	{"banknote": 20, "available": 3},
+	{"banknote": 10, "available": 8},
+	{"banknote": 5, "available": 9}
+]

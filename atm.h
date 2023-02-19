@@ -1,7 +1,7 @@
 #ifndef _ATM_
 #define _ATM_
 
-#include "csvDepot.h"
+#include "depot/csvDepot.h"
 
 struct ATMSlip {
     unsigned int total;

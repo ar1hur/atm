@@ -6,7 +6,7 @@ CXX = g++
 CXXFLAGS = 
 # Target and dependencies 
 TARGET = main 
-OBJS = main.o atm.o csvDepot.o 
+OBJS = main.o atm.o depot/csvDepot.o depot/jsonDepot.o
 
 # Build and run 
 all: $(TARGET)

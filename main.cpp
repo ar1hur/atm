@@ -1,21 +1,22 @@
 #include "atm.h"
-#include "csvDepot.h"
+#include "depot/csvDepot.h"
+#include "depot/jsonDepot.h"
 #include <iostream>
-
-using namespace std;
 
 
 int main() {
+    IDepot *jsonDepot = new JSONDepot();
     IDepot *csvDepot = new CSVDepot();
-    ATM atm(csvDepot);
-    ATMSlip s;
-
-    cout << "Enter your amount:" << endl;
+    
+    // you can choose between depots:
+    //ATM atm(csvDepot);
+    ATM atm(jsonDepot);
 
     unsigned int amount;
+    cout << "Enter your amount:" << endl;
     cin >> amount;
 
-    s = atm.widthdraw(amount);
+    ATMSlip s = atm.widthdraw(amount);
 
     for (unsigned short i=0; i<7; i++) {
         if (s.widthdraws[i][0] > 0) {
