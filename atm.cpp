@@ -3,7 +3,10 @@
 
 using namespace std;
 
-ATM::ATM(IDepot* pDepot) { ATM::pDepot = pDepot; }
+ATM::ATM(IDepot* pDepot) {
+  ATM::pDepot = pDepot;
+  pDepot->readDepot();
+}
 
 ATMSlip ATM::newSlip(unsigned short** banknotes) {
   ATMSlip slip;

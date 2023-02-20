@@ -1,15 +1,18 @@
 #include "atm.h"
 #include "depot/csvDepot.h"
 #include "depot/jsonDepot.h"
+#include "depot/sqliteDepot.h"
 #include <iostream>
 
 int main() {
   IDepot* jsonDepot = new JSONDepot();
   IDepot* csvDepot = new CSVDepot();
+  IDepot* sqliteDepot = new SQLiteDepot();
 
   // you can choose between depots:
-  // ATM atm(csvDepot);
-  ATM atm(jsonDepot);
+  // ATM atm(sqliteDepot);
+  // ATM atm(jsonDepot);
+  ATM atm(csvDepot);
 
   unsigned int amount;
   cout << "Enter your amount:" << endl;
