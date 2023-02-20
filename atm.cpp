@@ -13,8 +13,8 @@ ATMSlip ATM::newSlip(unsigned short** banknotes) {
     slip.total = 0;
 
     for (unsigned short i=0; i<7; i++) {
-        slip.widthdraws[i][0] = 0;
-        slip.widthdraws[i][1] = banknotes[i][1];
+        slip.withdraws[i][0] = 0;
+        slip.withdraws[i][1] = banknotes[i][1];
     }
 
     return slip;
@@ -28,7 +28,7 @@ void ATM::writeDepot(unsigned short** banknotes) {
     pDepot->writeDepot(banknotes);
 }
 
-ATMSlip ATM::widthdraw(unsigned int amount) {
+ATMSlip ATM::withdraw(unsigned int amount) {
     unsigned short** banknotes = readDepot();
 
     ATMSlip slip = newSlip(banknotes);
@@ -44,7 +44,7 @@ ATMSlip ATM::widthdraw(unsigned int amount) {
             withdrawal = true;
             amount -= banknotes[i][1];
             banknotes[i][0]--;
-            slip.widthdraws[i][0]++;
+            slip.withdraws[i][0]++;
 
             if ((amount > 5 && amount < 10) || (amount > 0 && amount < 5)) {                
                 slip.rest = amount;
@@ -54,8 +54,8 @@ ATMSlip ATM::widthdraw(unsigned int amount) {
     }
 
     for (i=0; i<7; i++) {
-        if (slip.widthdraws[i][0] > 0) {                    
-            slip.total += banknotes[i][1] * slip.widthdraws[i][0];
+        if (slip.withdraws[i][0] > 0) {
+            slip.total += banknotes[i][1] * slip.withdraws[i][0];
         }
     }
 

@@ -6,13 +6,13 @@
 struct ATMSlip {
     unsigned int total;
     unsigned int amount;
-    unsigned short widthdraws[7][2]; // 0=count | 1=value
+    unsigned short withdraws[7][2]; // 0=count | 1=value
     unsigned int rest;
 };
 
 class ATM: private IDepot {
     unsigned short** readDepot();
-    void writeDepot(unsigned short** widthdraws);
+    void writeDepot(unsigned short** withdraws);
 
     private:
         ATMSlip newSlip(unsigned short** banknotes);
@@ -20,7 +20,7 @@ class ATM: private IDepot {
         
     public:
         ATM(IDepot *pDepot);
-        ATMSlip widthdraw(unsigned int amount);
+        ATMSlip withdraw(unsigned int amount);
 };
 
 #endif

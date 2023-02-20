@@ -16,11 +16,11 @@ int main() {
     cout << "Enter your amount:" << endl;
     cin >> amount;
 
-    ATMSlip s = atm.widthdraw(amount);
+    ATMSlip s = atm.withdraw(amount);
 
     for (unsigned short i=0; i<7; i++) {
-        if (s.widthdraws[i][0] > 0) {
-            cout << s.widthdraws[i][0] << "x " << s.widthdraws[i][1] << " EUR" << endl;            
+        if (s.withdraws[i][0] > 0) {
+            cout << s.withdraws[i][0] << "x " << s.withdraws[i][1] << " EUR" << endl;
         }
     }
     cout << "total: " << s.total << endl;
