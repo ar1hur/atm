@@ -3,28 +3,27 @@
 #include "depot/jsonDepot.h"
 #include <iostream>
 
-
 int main() {
-    IDepot *jsonDepot = new JSONDepot();
-    IDepot *csvDepot = new CSVDepot();
-    
-    // you can choose between depots:
-    //ATM atm(csvDepot);
-    ATM atm(jsonDepot);
+  IDepot* jsonDepot = new JSONDepot();
+  IDepot* csvDepot = new CSVDepot();
 
-    unsigned int amount;
-    cout << "Enter your amount:" << endl;
-    cin >> amount;
+  // you can choose between depots:
+  // ATM atm(csvDepot);
+  ATM atm(jsonDepot);
 
-    ATMSlip s = atm.withdraw(amount);
+  unsigned int amount;
+  cout << "Enter your amount:" << endl;
+  cin >> amount;
 
-    for (unsigned short i=0; i<7; i++) {
-        if (s.withdraws[i][0] > 0) {
-            cout << s.withdraws[i][0] << "x " << s.withdraws[i][1] << " EUR" << endl;
-        }
+  ATMSlip s = atm.withdraw(amount);
+
+  for (unsigned short i = 0; i < 7; i++) {
+    if (s.withdraws[i][0] > 0) {
+      cout << s.withdraws[i][0] << "x " << s.withdraws[i][1] << " EUR" << endl;
     }
-    cout << "total: " << s.total << endl;
-    cout << "rest: " << s.rest << endl;
+  }
+  cout << "total: " << s.total << endl;
+  cout << "rest: " << s.rest << endl;
 
-    return 0;
+  return 0;
 }

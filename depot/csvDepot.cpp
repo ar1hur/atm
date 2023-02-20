@@ -6,40 +6,41 @@
 using namespace std;
 
 unsigned short** CSVDepot::readDepot() {
-    cout << "reading csvdepot..." << endl;
-    fstream file;
-    string line;
-    unsigned short** banknotes = new unsigned short*[7];
+  cout << "reading csvdepot..." << endl;
+  fstream file;
+  string line;
+  unsigned short** banknotes = new unsigned short*[7];
 
-    file.open("depot.csv", ios::in);
+  file.open("depot.csv", ios::in);
 
-    for (unsigned short i=0; i<7; i++) {
-        getline(file,line);
+  for (unsigned short i = 0; i < 7; i++) {
+    getline(file, line);
 
-        banknotes[i] = new unsigned short[2];
-        
-        size_t pos = line.find(";");    
-        banknotes[i][1] = stoi(line.substr(0, pos));
+    banknotes[i] = new unsigned short[2];
 
-        size_t end = line.find("\n");
-        banknotes[i][0] = stoi(line.substr(pos+1, end));
+    size_t pos = line.find(";");
+    banknotes[i][1] = stoi(line.substr(0, pos));
 
-        cout << "banknote: " << banknotes[i][0] << " value: " << banknotes[i][1] << endl;
-    }
+    size_t end = line.find("\n");
+    banknotes[i][0] = stoi(line.substr(pos + 1, end));
 
-    file.close();  
-    return banknotes;  
+    cout << "banknote: " << banknotes[i][0] << " value: " << banknotes[i][1]
+         << endl;
+  }
+
+  file.close();
+  return banknotes;
 }
 
 void CSVDepot::writeDepot(unsigned short** banknotes) {
-    cout << "writing csvdepot..." << endl;
+  cout << "writing csvdepot..." << endl;
 
-    fstream file;
-    string line;
+  fstream file;
+  string line;
 
-    file.open("depot.csv", ios::out);
-    for (unsigned short i=0; i<7; i++) {
-        file << banknotes[i][1] << ";" << banknotes[i][0] << "\n";
-    }
-    file.close(); 
+  file.open("depot.csv", ios::out);
+  for (unsigned short i = 0; i < 7; i++) {
+    file << banknotes[i][1] << ";" << banknotes[i][0] << "\n";
+  }
+  file.close();
 }

@@ -6,11 +6,11 @@
 
 using namespace std;
 
-class JSONDepot: public IDepot {    
-    protected:    
-        unsigned short extractValue(const string& keywordMarker, const string& line);
-        unsigned short** readDepot();
-        void writeDepot(unsigned short** banknotes);        
+class JSONDepot : public IDepot {
+protected:
+  unsigned short extractValue(const string& keywordMarker, const string& line);
+  unsigned short** readDepot();
+  void writeDepot(unsigned short** banknotes);
 };
 
 #endif
